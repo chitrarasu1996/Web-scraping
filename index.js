@@ -40,7 +40,7 @@ let title=$(index).find("._4rR01T").text();
 let rating=$(index).find("._3LWZlK").text()
 let price=$(index).find("._3I9_wc ").text()
 let finalPrice=$(index).find("._30jeq3 ,._3Ay6Sb > span ").text()
-console.log(finalPrice)
+
 allProductsDetails.push({image,title,rating,price,finalPrice})
 
 })
