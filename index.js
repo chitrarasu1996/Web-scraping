@@ -82,6 +82,6 @@ const remove=await products.collection.drop();
 
 getAllProducts();
 
-},20000)
+},43200000)
 
 
