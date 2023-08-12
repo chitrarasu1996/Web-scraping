@@ -42,13 +42,15 @@ allProductsDetails.push({image,title,rating,price,finalPrice})
 
 })
 
-
+console.log(allProductsDetails,"all")
 const createProdcuts=await productsModel.create(allProductsDetails)
   
-
+if(createProdcuts){
     app.get("/products",(req,res)=>{
         res.status(200).send({message:"all products got",data:allProductsDetails})
     })
+}
+   
     
     }catch(er){
     console.log(er,"rrr")
