@@ -12,7 +12,7 @@ const productsSchema=mongoose.Schema({
     },
 rating:{
     type:String,
-    required:true
+    default:"3",
 },
 price:{
     type:String,

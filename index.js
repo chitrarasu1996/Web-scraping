@@ -10,10 +10,9 @@ db();
 const axios=require("axios");
 const pretty=require("pretty")
 const cheerio=require("cheerio");
-const products=require("./models/products.models");
+const productsModel=require("./models/products.models");
 
 const { Collection } = require("mongoose");
-
 
 
 
@@ -26,14 +25,11 @@ const getAllProducts=async()=>{
 
 
     try{ 
-        
-        let response=await axios.get(flipkartUrl)
-
+  let response=await axios.get(flipkartUrl)
 const $= cheerio.load( response.data)
 
 
 let mobiles=$("._3pLy-c")
-
 let allProductsDetails=[]
 mobiles.map((item,index)=>{
     let image=$("._396cs4").attr("src")
@@ -46,25 +42,25 @@ allProductsDetails.push({image,title,rating,price,finalPrice})
 
 })
 
-    const createProdcuts=await products.create(allProductsDetails)
-   
 
-    app.use("/products",(req,res)=>{
+const createProdcuts=await productsModel.create(allProductsDetails)
+  
+
+    app.get("/products",(req,res)=>{
         res.status(200).send({message:"all products got",data:allProductsDetails})
     })
     
     }catch(er){
-    console.log("error while adding products")
+    console.log(er,"rrr")
     }
 }
 
 getAllProducts();
 
-
-const port=process.env.port||8000;
+const port=process.env.port;
 
 app.listen(port,()=>{
-    console.log("port is running")
+    console.log("port is running",port)
 })
 
 
@@ -72,10 +68,6 @@ app.get(("/"),(req,res)=>{
 res.status(200).send({message:"facebook scarping"})
 });
 
-app.get(("/products",(req,res)=>{
-
-    
-}))
 
 setInterval(async()=>{
 
