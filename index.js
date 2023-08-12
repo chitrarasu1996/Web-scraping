@@ -42,7 +42,7 @@ allProductsDetails.push({image,title,rating,price,finalPrice})
 
 })
 
-console.log(allProductsDetails,"all")
+
 const createProdcuts=await productsModel.create(allProductsDetails)
   
 if(createProdcuts){
