@@ -47,7 +47,7 @@ allProductsDetails.push({image,title,rating,price,finalPrice})
 })
 
     const createProdcuts=await products.create(allProductsDetails)
-    console.log("products has been successfuly added")
+   
 
     app.use("/products",(req,res)=>{
         res.status(200).send({message:"all products got",data:allProductsDetails})
