@@ -7,6 +7,9 @@ const app=express();
 app.use(express.json());
 app.use(cors())
 db();
+
+const userRoutes=require("./routes/user.routes")
+app.use("/user",userRoutes)
 const axios=require("axios");
 const pretty=require("pretty")
 const cheerio=require("cheerio");
